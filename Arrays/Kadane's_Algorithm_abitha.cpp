@@ -7,11 +7,12 @@ class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
         int maxi;
-        int res = nums[0];
         int n = nums.size();
+        int res = nums[0];
+        int prevMax = nums[0];
         for(int i = 1;i < n;i++) {
-            nums[i] = max(nums[i-1]+nums[i], nums[i]);
-            res = max(nums[i], res);
+            prevMax = max(prevMax+nums[i], nums[i]);
+            res = max(prevMax, res);
         }
         return res;
     }
