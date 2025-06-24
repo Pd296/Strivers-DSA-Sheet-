@@ -1,20 +1,34 @@
 class Solution {
-
-    public int miner(int[] nums,int k,int i,int xor){
-        if(i==nums.length){
-            if(xor==k) return 1;
-            else return 0;
-        }
-        
-        int inc=miner(nums,k,i+1,xor^nums[i]);
-
-        while(i<nums.length-1 && nums[i]<nums[i+1]) i++;
-        int exc=miner(nums,k,i+1,xor);
-        return inc+exc;
-    }
     public int subarraysWithXorK(int[] nums, int k) {
-      //int count=0;
-      Arrays.sort(nums);
-      return miner(nums,k,0,0);
+      /*
+      //O(n)^2 Approach
+      int count=0;
+      int n=nums.length;
+      for(int i=0;i<n;i++){
+        int xr=0;
+        for(int j=i;j<n;j++){
+            xr=xr ^ nums[j];
+            if(xr==k) count++;
+        }
+      }
+      return count;*/
+      int xr=0;
+      Map<Integer,Integer> map=new HashMap<>();
+      map.put(0,1);
+      int count=0;
+      int n=nums.length;
+      for(int i=0;i<n;i++){
+        xr=xr ^ nums[i];
+
+        int x=xr ^ k;
+        if(map.containsKey(x)){
+            count=count+map.get(x);
+            map.put(x,map.get(x)+1);
+        }
+        else{
+            map.put(x,1);
+        }
+      }
+      return count;
     }
 }
