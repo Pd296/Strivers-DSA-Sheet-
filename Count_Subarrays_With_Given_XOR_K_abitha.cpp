@@ -1,7 +1,7 @@
 /*
 Date : 23rd June 2025
 Problem link : https://takeuforward.org/plus/dsa/problems/count-subarrays-with-given-xor-k
-*
+*/
 
 class Solution {
   public:
