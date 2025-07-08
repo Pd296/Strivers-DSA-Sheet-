@@ -2,6 +2,7 @@
 //date-8-jul-2025
 //link-https://leetcode.com/problems/combination-sum-ii/description/
 
+// Recursive stack can be optimised by decreasing parameters
 class Solution {
     void helper (int[] candidates,int target,int cur_sum,int i,List<Integer> temp,List<List<Integer>> ans){
         if(cur_sum==target){
