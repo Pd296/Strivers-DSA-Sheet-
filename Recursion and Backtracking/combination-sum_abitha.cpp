@@ -4,10 +4,16 @@ public:
 
     void findCombination(int ind, vector<int>& candidates, int target, vector<vector<int>>& ans, vector<int>& temp) {
         if(ind == candidates.size()) {
-            if(target == 0) {
-                ans.push_back(temp);
-            }
+            // if(target == 0) {
+            //     ans.push_back(temp);
+                
+            // }
             return;
+        }
+        if(target == 0) {
+                ans.push_back(temp);
+                return;
+                
         }
         if(candidates[ind] <= target) {
             //we can pick the element
