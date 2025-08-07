@@ -24,6 +24,5 @@ class Solution {
             return new BST(true,min,max,size,size);
         }
         return new BST(false,0,0,Math.max(left.ans,right.ans),0);
-        
     }
 }
