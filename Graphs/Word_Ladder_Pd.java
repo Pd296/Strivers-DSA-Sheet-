@@ -1,8 +1,3 @@
-/*
-  Problem Link : https://leetcode.com/problems/word-ladder/
-  Date : 24th August 2025
- */
-
 class Solution {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
 
@@ -29,7 +24,7 @@ class Solution {
                 for(int i=0;i<charArrayWord.length;i++){
                     char originalChar = charArrayWord[i];
 
-                    for(char c='a';c<'z';c++){
+                    for(char c='a';c<='z';c++){
                         charArrayWord[i]=c;
                         String formedString = new String(charArrayWord);
 
@@ -47,6 +42,6 @@ class Solution {
             //increment the distance 
             distance += 1;
         }
-        return distance;
+        return 0;
     }
 }
