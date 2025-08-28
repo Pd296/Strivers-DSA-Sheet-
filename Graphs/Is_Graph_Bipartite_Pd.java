@@ -14,7 +14,11 @@ class Solution {
         
         for(int i=0;i<n;i++){
             if(!visited[i]){
-                if(!isGraphBipartiteBFS(i,1,color,visited,graph)) return false;
+                //BFS
+                //if(!isGraphBipartiteBFS(i,1,color,visited,graph)) return false;
+
+                //DFS
+                if(!isGraphBipartiteDFS(i,1,color,visited,graph)) return false;
             }
         }
 
@@ -48,5 +52,25 @@ class Solution {
             }
         }
         return true;
+    }
+
+    private boolean isGraphBipartiteDFS(int curr,int currColor,int[] color,boolean[] visited,int[][] graph){
+
+        color[curr]=currColor;
+        visited[curr]=true;
+        currColor=currColor*-1;
+        
+        int[] neighbours = graph[curr];
+        for(int adjNode : neighbours){
+
+            if(!visited[adjNode]){
+                if(!isGraphBipartiteDFS(adjNode,currColor,color,visited,graph))  
+                    return false;
+            }else if(visited[adjNode] && color[adjNode]==color[curr]) 
+                   return false;
+        }
+
+        return true;
+      
     }
 }
