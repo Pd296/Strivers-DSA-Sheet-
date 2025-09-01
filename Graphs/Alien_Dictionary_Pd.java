@@ -2,7 +2,7 @@
 
   Problem Link : https://www.geeksforgeeks.org/problems/alien-dictionary/1?
   Date : 31st August 2025
-
+  
  */
 
 
@@ -49,7 +49,7 @@ class Solution {
             }
         }
 
-        // Topological sort 
+        // Topological sort (Kahn's)
         Queue<Character> q = new LinkedList<>();
         for (char c : chars) {
             if (indegree[c - 'a'] == 0) q.offer(c);
