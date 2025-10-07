@@ -13,8 +13,8 @@ class DisjointSet {
     DisjointSet(int n){
         size = new int[n];
         parent = new int[n];
-        Arrays.fill(size,0);
-        for(int i=0;i<n;i++) parent[i]=i;
+        Arrays.fill(size,1); //initially size of each component is 1
+        for(int i=0;i<n;i++) parent[i]=i; //initially parent of each node is itself
     }
     
     int findUParent(int node){
