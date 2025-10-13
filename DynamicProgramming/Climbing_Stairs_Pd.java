@@ -1,3 +1,10 @@
+/*
+
+    Problem Link: https://leetcode.com/problems/climbing-stairs/
+    Date : 13th October 2025
+    
+ */
+
 class Solution {
     public int climbStairs(int n) {
         
@@ -13,7 +20,7 @@ class Solution {
             numberOfWaysToReachStepPrev2 = numberOfWaysToReachStepPrev;
             numberOfWaysToReachStepPrev = numberOfWaysToReachStep;
         }
-        
+
         return numberOfWaysToReachStep;
     }
 }
