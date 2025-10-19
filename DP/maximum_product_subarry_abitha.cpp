@@ -18,3 +18,7 @@ public:
         
     }
 };
+
+// 1) All +ve
+// 2) Even -ve, +ve
+// 3) Odd -ve, +ve - remove one -ve, so after removing we will check if prefix is big or suffix is
