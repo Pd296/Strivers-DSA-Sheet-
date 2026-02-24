@@ -37,3 +37,72 @@ class Solution {
         
     }
 }
+
+
+/*
+
+   Problem Link : https://www.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1
+   Date : 24th Feb 2026
+
+ */
+
+
+class Solution {
+    public int knapSack(int val[], int wt[], int capacity) {
+        // code here
+        
+        int n=val.length;
+        int[][] dp = new int[n][capacity+1];
+        for(int i=0;i<n;i++) Arrays.fill(dp[i],-1);
+        //return unboundedKnapsackTopDown(n-1,capacity,wt,val,dp);
+        
+        return bottomUp(wt,val,capacity);
+    }
+    
+    private int unboundedKnapsackTopDown(int ind,int capacity,int[] wt,int[] val,int[][] dp){
+        
+        if(ind == 0){
+            if(wt[0] <= capacity) return ((int)(capacity/wt[0])) * val[0];
+            else return 0;
+        }
+        
+        if(dp[ind][capacity] != -1 ) return dp[ind][capacity];
+        
+        int notTake = 0  + unboundedKnapsackTopDown(ind-1,capacity,wt,val,dp);
+        int Take = Integer.MIN_VALUE;
+        if(wt[ind] <= capacity)
+            Take = val[ind] + unboundedKnapsackTopDown(ind,capacity-wt[ind],wt,val,dp);
+        
+        int maxValue = Math.max(notTake , Take);
+        dp[ind][capacity] = maxValue;
+        
+        return maxValue;
+    }
+    
+    private int bottomUp(int[] wt , int[] val,int capacity){
+        
+        int n = wt.length;
+        int[][] dp = new int[n][capacity+1];
+        
+        for(int weight=0; weight<=capacity;weight++){
+            dp[0][weight] = ((int)(weight/wt[0])) * val[0];
+        }
+        
+        for(int ind = 1 ; ind < n ; ind ++){
+            for(int weight = 0; weight <= capacity ; weight++){
+                
+                  int notTake = dp[ind-1][weight];
+                  int Take = Integer.MIN_VALUE;
+                  if(wt[ind] <= weight)
+                        Take = val[ind] + dp[ind][weight-wt[ind]];
+                    
+                  int maxValue = Math.max(notTake , Take);
+                  dp[ind][weight] = maxValue;
+            }
+        }
+        return dp[n-1][capacity];
+    }
+}
+
+
+
