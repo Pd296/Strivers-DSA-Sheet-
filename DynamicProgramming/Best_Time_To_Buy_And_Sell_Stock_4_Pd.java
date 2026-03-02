@@ -1,23 +1,23 @@
 /*
 
-   Problem Link : https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
+   Problem Link : https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/description/
    Date : 2nd Mar 2026
 
  */
 
 class Solution {
-    public int maxProfit(int[] prices) {
-        
+    public int maxProfit(int k, int[] prices) {
         // int n = prices.length;
-        // int maxTransactionsAllowed = 2;
+        // int maxTransactionsAllowed = k;
         // int[][][] dp = new int[n][maxTransactionsAllowed+1][2];
         // for(int i=0;i<n;i++){
         //     for(int[] arr : dp[i]) Arrays.fill(arr,-1);
         // }
 
         // return maxProfitTopDown(0,maxTransactionsAllowed,1,prices,dp); 
-        return maxProfitBottomUp(prices);
+        return maxProfitBottomUp(prices,k);
     }
+
     private int maxProfitTopDown(int ind,int k,int buy,int[] price,int[][][] dp){
         
         if(k == 0) return 0;
@@ -39,10 +39,10 @@ class Solution {
         return max;
     }
 
-    private int maxProfitBottomUp(int[] price){
+    private int maxProfitBottomUp(int[] price,int K){
 
         int n = price.length;
-        int maxTransactionsAllowed = 2;
+        int maxTransactionsAllowed = K;
         int[][][] dp = new int[n+1][maxTransactionsAllowed+1][2];
         
 
@@ -91,6 +91,6 @@ class Solution {
             }
         }
 
-        return dp[0][maxTransactionsAllowed][1]; // max profit from index 0 with 2 transactions allowed and we can buy
+        return dp[0][maxTransactionsAllowed][1]; // max profit from index 0 with K transactions allowed and we can buy
     }
 }
