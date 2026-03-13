@@ -36,7 +36,7 @@ class Solution {
         for(int j=0;j<=n;j++) dp[n][j] = 0;
 
         for(int ind=n-1;ind>=0;ind--){
-            for(int prevIndex=n-1;prevIndex>=-1;prevIndex--){
+            for(int prevIndex=ind-1;prevIndex>=-1;prevIndex--){
 
                 int dontTake = dp[ind+1][prevIndex+1];
                 int take = 0;
